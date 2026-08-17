@@ -1,0 +1,75 @@
+{
+  "name": "@zincapp/znvault-plugin-powerdns",
+  "version": "0.1.0",
+  "description": "Vault-backed PowerDNS Authoritative management for the znvault CLI",
+  "type": "module",
+  "main": "dist/cli.js",
+  "types": "dist/cli.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./cli": {
+      "types": "./dist/cli.d.ts",
+      "import": "./dist/cli.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "build:prod": "tsc -p tsconfig.build.json --sourceMap false --declarationMap false",
+    "clean": "rm -rf dist coverage",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src test",
+    "check": "npm run lint && npm run typecheck && npm test && npm run build",
+    "prepublishOnly": "npm run check"
+  },
+  "keywords": [
+    "znvault",
+    "powerdns",
+    "dns",
+    "cli",
+    "secrets-management"
+  ],
+  "author": "ZincApp",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vidaldiego/znvault-plugin-powerdns.git"
+  },
+  "homepage": "https://github.com/vidaldiego/znvault-plugin-powerdns#readme",
+  "bugs": {
+    "url": "https://github.com/vidaldiego/znvault-plugin-powerdns/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "@zincapp/znvault-cli": ">=2.11.0"
+  },
+  "peerDependenciesMeta": {
+    "@zincapp/znvault-cli": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.2",
+    "@types/node": "^25.0.10",
+    "@typescript-eslint/eslint-plugin": "^8.63.0",
+    "@typescript-eslint/parser": "^8.63.0",
+    "@vitest/coverage-v8": "^4.0.17",
+    "commander": "^14.0.2",
+    "eslint": "^9.39.2",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.63.0",
+    "vitest": "^4.0.17"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
